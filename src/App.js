@@ -34,10 +34,10 @@ const App = () => {
     rentEnd: "",
     rent: "",
     security: "",
-    ten1gender: "",
-    ten2gender: "",
-    ten3gender: "",
-    ten4gender: "",
+    ten1gender: "MR",
+    ten2gender: "MR",
+    ten3gender: "MR",
+    ten4gender: "MR",
     thingsGiven: [{ entity: "", units: "" }],
   });
 
@@ -179,9 +179,9 @@ const App = () => {
 
             setformData({
               propertyOwnerName: "",
-              OwnerGender: "",
+              OwnerGender: "MR",
               propertyByOwner: "",
-              byOwnerGender: "",
+              byOwnerGender: "S/O",
               propertyAddress: "",
               tenOneName: "",
               tenOneParent: "",
@@ -196,20 +196,20 @@ const App = () => {
               tenTwoAddress: "",
               tenThreeAddress: "",
               tenFourAddress: "",
-              tenOneGender: "",
-              tenTwoGender: "",
-              tenThreeGender: "",
-              tenFourGender: "",
+              tenOneGender: "S/O",
+              tenTwoGender: "S/O",
+              tenThreeGender: "S/O",
+              tenFourGender: "S/O",
               witness1: "",
               witness2: "",
               shiftingDate: "",
               rentEnd: "",
               rent: "",
               security: "",
-              ten1gender: "",
-              ten2gender: "",
-              ten3gender: "",
-              ten4gender: "",
+              ten1gender: "MR",
+              ten2gender: "MR",
+              ten3gender: "MR",
+              ten4gender: "MR",
               // clauses: "",
             });
           }}
@@ -414,7 +414,7 @@ const App = () => {
           <select
             name="gender"
             id="gender"
-            value={formData.ten1gender}
+            value={formData.ten4gender}
             onChange={(e) => {
               setformData({ ...formData, ten4gender: e.target.value });
             }}
