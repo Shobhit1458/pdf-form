@@ -8,9 +8,9 @@ import { PDFDownloadLink, BlobProvider } from "@react-pdf/renderer";
 const App = () => {
   const [formData, setformData] = useState({
     propertyOwnerName: "",
-    OwnerGender: "",
+    OwnerGender: "MR",
     propertyByOwner: "",
-    byOwnerGender: "",
+    byOwnerGender: "S/O",
     propertyAddress: "",
     tenOneName: "",
     tenOneParent: "",
@@ -24,10 +24,10 @@ const App = () => {
     tenTwoAddress: "",
     tenThreeAddress: "",
     tenFourAddress: "",
-    tenOneGender: "",
-    tenTwoGender: "",
-    tenThreeGender: "",
-    tenFourGender: "",
+    tenOneGender: "S/O",
+    tenTwoGender: "S/O",
+    tenThreeGender: "S/O",
+    tenFourGender: "S/O",
     witness1: "",
     witness2: "",
     shiftingDate: "",
@@ -166,11 +166,13 @@ const App = () => {
   }
 
   return (
-    <div style={{
-      display: "flex",
-      justifyContent: "center",
-      alignItems:"center",
-    }}>
+    <div
+      style={{
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+      }}
+    >
       <div id="form-hide">
         <h1>Rent Agreement</h1>
         <form
