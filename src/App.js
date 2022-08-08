@@ -3,15 +3,17 @@ import React from "react";
 import { useState } from "react";
 import PDFFile from "./components/PDFFile";
 import { PDFDownloadLink, BlobProvider } from "@react-pdf/renderer";
-// import ImageContainer from "./components/ImageContainer";
+
 
 const App = () => {
   const [formData, setformData] = useState({
+    placeAddress:"",
     propertyOwnerName: "",
     OwnerGender: "MR",
     propertyByOwner: "",
     byOwnerGender: "S/O",
     propertyAddress: "",
+    ownerAddress:"",
     tenOneName: "",
     tenOneParent: "",
     tenTwoName: "",
@@ -63,91 +65,7 @@ const App = () => {
     });
   };
 
-  // const [sigImg, setsigImg] = useState("");
-  // const [sigImg1, setsigImg1] = useState("");
-  // const [sigImg2, setsigImg2] = useState("");
-  // const [sigImg3, setsigImg3] = useState("");
-  // const [sigImg4, setsigImg4] = useState("");
-  // const [sigImg5, setsigImg5] = useState("");
-  // const [sigImg6, setsigImg6] = useState("");
-
-  // const imgPreview = (e) => {
-  //   console.log("here");
-  //   const newImg = document.querySelector("#newImg");
-
-  //   const [file] = e.target.files;
-  //   console.log(file);
-  //   if (file) {
-  //     newImg.src = URL.createObjectURL(file);
-  //     setsigImg(newImg);
-  //   }
-  // };
-  // const imgPreview1 = (e) => {
-  //   console.log("here");
-  //   const newImg = document.querySelector("#newImg1");
-
-  //   const [file] = e.target.files;
-  //   console.log(file);
-  //   if (file) {
-  //     newImg.src = URL.createObjectURL(file);
-  //     setsigImg1(newImg);
-  //   }
-  // };
-  // const imgPreview2 = (e) => {
-  //   console.log("here");
-  //   const newImg2 = document.querySelector("#newImg2");
-
-  //   const [file] = e.target.files;
-  //   console.log(file);
-  //   if (file) {
-  //     newImg2.src = URL.createObjectURL(file);
-  //     setsigImg2(newImg2);
-  //   }
-  // };
-  // const imgPreview3 = (e) => {
-  //   console.log("here");
-  //   const newImg3 = document.querySelector("#newImg3");
-
-  //   const [file] = e.target.files;
-  //   console.log(file);
-  //   if (file) {
-  //     newImg3.src = URL.createObjectURL(file);
-  //     setsigImg3(newImg3);
-  //   }
-  // };
-  // const imgPreview4 = (e) => {
-  //   console.log("here");
-  //   const newImg4 = document.querySelector("#newImg4");
-
-  //   const [file] = e.target.files;
-  //   console.log(file);
-  //   if (file) {
-  //     newImg4.src = URL.createObjectURL(file);
-  //     setsigImg4(newImg4);
-  //   }
-  // };
-  // const imgPreview5 = (e) => {
-  //   console.log("here");
-  //   const newImg5 = document.querySelector("#newImg5");
-
-  //   const [file] = e.target.files;
-  //   console.log(file);
-  //   if (file) {
-  //     newImg5.src = URL.createObjectURL(file);
-  //     setsigImg5(newImg5);
-  //   }
-  // };
-  // const imgPreview6 = (e) => {
-  //   console.log("here");
-  //   const newImg6 = document.querySelector("#newImg6");
-
-  //   const [file] = e.target.files;
-  //   console.log(file);
-  //   if (file) {
-  //     newImg6.src = URL.createObjectURL(file);
-  //     setsigImg6(newImg6);
-  //   }
-  // };
+  
 
   async function storeInCloud(blob) {
     var formData = new FormData();
@@ -180,11 +98,13 @@ const App = () => {
             e.preventDefault();
 
             setformData({
+              placeAddress:"",
               propertyOwnerName: "",
               OwnerGender: "MR",
               propertyByOwner: "",
               byOwnerGender: "S/O",
               propertyAddress: "",
+              ownerAddress:"",
               tenOneName: "",
               tenOneParent: "",
               tenRelation: "",
@@ -216,12 +136,23 @@ const App = () => {
             });
           }}
         >
+          <label htmlFor="html"> Place at which the rent agreement is executed : </label>
+          <input
+            type="text"
+            placeholder="District,State"
+            onChange={(e) => {
+              setformData({ ...formData, placeAddress: e.target.value });
+            }}
+            value={formData.rentEnd}
+            required
+          />{" "}
+          <br />
           <select
             name="gender"
             id="gender"
             value={formData.OwnerGender}
             onChange={(e) => {
-              setformData({ ...formData, OwnerGender: e.target.value });
+              setformData({ ...formData, placeAddress: e.target.value });
             }}
           >
             <option value="MR">MR</option>
@@ -264,6 +195,15 @@ const App = () => {
               setformData({ ...formData, propertyAddress: e.target.value });
             }}
             value={formData.propertyAddress}
+            required
+          />{" "}
+          <input
+            type="text"
+            placeholder="Owner Address"
+            onChange={(e) => {
+              setformData({ ...formData, ownerAddress: e.target.value });
+            }}
+            value={formData.ownerAddress}
             required
           />{" "}
           <br />
@@ -460,7 +400,7 @@ const App = () => {
             value={formData.tenFourAddress}
           />{" "}
           <br />
-          <label for="html">Shifting Date</label>
+          <label htmlFor="html">Shifting Date</label>
           <input
             type="date"
             placeholder="Shifting Date"
@@ -471,7 +411,7 @@ const App = () => {
             required
           />{" "}
           <br />
-          <label for="html"> Date when the tenant vacate the property : </label>
+          <label htmlFor="html"> Date when the tenant vacate the property : </label>
           <input
             type="date"
             placeholder="Rent End"
@@ -522,69 +462,9 @@ const App = () => {
             required
           />{" "}
           <br />
-          {/* Upload Signature of Owner : <img src="#" id="newImg" alt="Signature:" width="100" height="100"/>
-          <input
-            type="file"
-            name="SignatureImage"
-            id="inpImg"
-            onChange={imgPreview}
-          />
+          
           <br />
-          Upload Signature of Tenant 1:
-          <img src="#" id="newImg1" alt="Signature: " width="100" height="100"/>
-          <input
-            type="file"
-            name="SignatureImage"
-            id="inpImg"
-            onChange={imgPreview1}
-          />
-          <br />
-          Upload Signature of Tenant 2:
-          <img src="#" id="newImg2"alt="Signature:" width="100" height="100"/>
-          <input
-            type="file"
-            name="SignatureImage"
-            id="inpImg"
-            onChange={imgPreview2}
-          />
-          <br />
-          Upload Signature of Tenant 3:
-          <img src="#" id="newImg3" alt="Signature:" width="100" height="100"/>
-          <input
-            type="file"
-            name="SignatureImage"
-            id="inpImg"
-            onChange={imgPreview3}
-          />
-          <br />
-          Upload Signature of Tenant 4:
-          <img src="#" id="newImg4" alt="Signature:" width="100" height="100"/>
-          <input
-            type="file"
-            name="SignatureImage"
-            id="inpImg"
-            onChange={imgPreview4}
-          />
-          <br />
-          Upload Signature of Witness 1:
-          <img src="#" id="newImg5" alt="Signature:" width="100" height="100"/>
-          <input
-            type="file"
-            name="SignatureImage"
-            id="inpImg"
-            onChange={imgPreview5}
-          />
-          <br />
-          Upload Signature of Witness 2:
-          <img src="#" id="newImg6" alt="Signature:" width="100" height="100"/>
-          <input
-            type="file"
-            name="SignatureImage"
-            id="inpImg"
-            onChange={imgPreview6}
-          /> */}
-          <br />
-          <label for="html">Items/Facilities provided to the tenant : </label>
+          <label htmlFor="html">Items/Facilities provided to the tenant : </label>
           {formData.thingsGiven.map((thing, i) => (
             <div key={i}>
               <div key={i}>
@@ -615,9 +495,7 @@ const App = () => {
 
       <PDFDownloadLink
         document={
-          <>
             <PDFFile formData={formData} />
-          </>
         }
         fileName="FORM"
       >
@@ -625,9 +503,7 @@ const App = () => {
       </PDFDownloadLink>
       <BlobProvider
         document={
-          <>
             <PDFFile formData={formData} />
-          </>
         }
         fileName="FORM"
       >

@@ -10,7 +10,7 @@ import {
   Line,
   // Polyline,
 } from "@react-pdf/renderer";
-// import ImageContainer from "./ImageContainer";
+
 
 Font.register({
   family: "Times-Bold",
@@ -91,8 +91,6 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-between",
     marginTop: 16,
-    // position:"absolute",
-    // bottom: 0 ,
   },
   header: {
     fontSize: 18,
@@ -107,7 +105,6 @@ const PDFFile = (props) => {
   function onlyOneSign() {
     return (
       <>
-        {/* <Image style={styles.image} src={props.sigImg1.src} /> */}
         <Text style={styles.textForSignature}>
           &nbsp;&nbsp;&nbsp;&nbsp;({props.formData.ten1gender}.
           {props.formData.tenOneName.toUpperCase()})
@@ -119,12 +116,10 @@ const PDFFile = (props) => {
   function onlyTwoSign() {
     return (
       <>
-        {/* <Image style={styles.image} src={props.sigImg1.src} /> */}
         <Text style={styles.textForSignature}>
           &nbsp;&nbsp;&nbsp;&nbsp;({props.formData.ten1gender}.
           {props.formData.tenOneName.toUpperCase()})
         </Text>
-        {/* <Image style={styles.image} src={props.sigImg2.src} /> */}
         <Text style={styles.textForSignature}>
           &nbsp;&nbsp;&nbsp;&nbsp;({props.formData.ten2gender}.
           {props.formData.tenTwoName.toUpperCase()})
@@ -136,17 +131,14 @@ const PDFFile = (props) => {
   function onlyThreeSign() {
     return (
       <>
-        {/* <Image style={styles.image} src={props.sigImg1.src} /> */}
         <Text style={styles.textForSignature}>
           &nbsp;&nbsp;&nbsp;&nbsp;({props.formData.ten1gender}.
           {props.formData.tenOneName.toUpperCase()})
         </Text>
-        {/* <Image style={styles.image} src={props.sigImg2.src} /> */}
         <Text style={styles.textForSignature}>
           &nbsp;&nbsp;&nbsp;&nbsp;({props.formData.ten2gender}.
           {props.formData.tenTwoName.toUpperCase()})
         </Text>
-        {/* <Image style={styles.image} src={props.sigImg3.src} /> */}
         <Text style={styles.textForSignature}>
           &nbsp;&nbsp;&nbsp;&nbsp;({props.formData.ten3gender}.
           {props.formData.tenThreeName.toUpperCase()})
@@ -157,20 +149,16 @@ const PDFFile = (props) => {
   function onlyFourSign() {
     return (
       <>
-        {/* <Image style={styles.image} src={props.sigImg1.src} /> */}
         <Text style={styles.textForSignature}>
           &nbsp;&nbsp;&nbsp;&nbsp;({props.formData.ten1gender}.
           {props.formData.tenOneName.toUpperCase()})
         </Text>
-        {/* <Image style={styles.image} src={props.sigImg2.src} /> */}
         <Text style={styles.textForSignature}>
           &nbsp;&nbsp;&nbsp;&nbsp; ({props.formData.ten2gender}.{props.formData.tenTwoName.toUpperCase()})
         </Text>
-        {/* <Image style={styles.image} src={props.sigImg3.src} /> */}
         <Text style={styles.textForSignature}>
           &nbsp;&nbsp;&nbsp;&nbsp; ({props.formData.ten3gender}.{props.formData.tenThreeName.toUpperCase()})
         </Text>
-        {/* <Image style={styles.image} src={props.sigImg4.src} /> */}
         <Text style={styles.textForSignature}>
           &nbsp;&nbsp;&nbsp;&nbsp; ({props.formData.ten4gender}.{props.formData.tenFourName.toUpperCase()})
         </Text>
@@ -258,7 +246,7 @@ const PDFFile = (props) => {
         <Text style={styles.header}> Rent Agreement</Text>
         <Text style={styles.text}>
           The Rent Agreement is executed at ROHINI, DELHI effective as of this
-          25 June 2022;
+          {props.formData.shiftingDate};
         </Text>
         <Text style={styles.text}>
           {" "}
@@ -268,7 +256,7 @@ const PDFFile = (props) => {
           <Text style={styles.bold}>{props.formData.OwnerGender.toUpperCase()}.{props.formData.propertyOwnerName.toUpperCase()}</Text>,
            {props.formData.byOwnerGender.toUpperCase()} {" "}<Text style={styles.bold}>
           {props.formData.propertyByOwner.toUpperCase()}</Text> R/O{" "}
-          <Text style={styles.bold}>{props.formData.propertyAddress.toUpperCase()}</Text>
+          <Text style={styles.bold}>{props.formData.ownerAddress.toUpperCase()}</Text>
           (Hereinafter called the{" "}
           <Text style={styles.bold}>“First Party / Landlord”</Text> which
           expression shall include her heirs, executors, successors, legal
@@ -282,9 +270,6 @@ const PDFFile = (props) => {
           : props.formData.tenFourName === ""
           ? onlyThreeTen()
           : onlyFourTen()}
-        {/* {()=>{
-          if(){return();}
-        }} */}
         
         <Text style={styles.text1}>
           (Hereinafter called the{" "}
@@ -295,8 +280,7 @@ const PDFFile = (props) => {
         </Text>
         <Text style={styles.text}>
           WHEREAS the <Text style={styles.bold}>“First Party / Landlord”</Text>{" "}
-          is the owner of property bearing, H.NO 5, THIRD FLOOR, POCKET5, SECTOR
-          22, ROHINI, DELHI 110086.
+          is the owner of property bearing, {props.formData.propertyAddress.toUpperCase()}.
         </Text>
         
         <Text style={styles.text}>
@@ -326,7 +310,6 @@ const PDFFile = (props) => {
               : props.formData.tenFourName === ""
               ? onlyThreeSign()
               : onlyFourSign()}
-              {/* <ImageContainer/> */}
 
           </div>
         </View>
@@ -365,14 +348,10 @@ const PDFFile = (props) => {
           3. That the <Text style={styles.bold}>Second Party/ Tenant</Text> has
           already paid Rs.
           <Text style={styles.bold}>{props.formData.security}</Text>/- as
-          interest-free security, &nbsp;&nbsp;&nbsp;&nbsp;the remaining
-          Rs.21,000 will be paid in two parts in the next successive months,
-          &nbsp;&nbsp;&nbsp;&nbsp;Rs.14,000 will be given in the second month
-          and the remaining Rs.7,000 will be given &nbsp;&nbsp;&nbsp;&nbsp;in
-          the third month to the First Party / Landlord, which will be refunded
-          at the time of &nbsp;&nbsp;&nbsp;&nbsp;vacation of the said Premises
+          interest-free security, &nbsp;&nbsp;&nbsp;&nbsp; to the First Party / Landlord, which will be refunded
+          at the time of vacation of the said &nbsp;&nbsp;&nbsp;&nbsp; Premises
           after adjusting any outstanding dues or any amount of any
-          &nbsp;&nbsp;&nbsp;&nbsp;damages, electricity dues, maintenance dues,
+          damages, electricity &nbsp;&nbsp;&nbsp;&nbsp; dues, maintenance dues,
           etc.
         </Text>
 
@@ -414,7 +393,6 @@ const PDFFile = (props) => {
         <View style={styles.imageContainer}>
           <div>
             <Text style={styles.textForSignature}>FIRST PARTY / LANDLORD</Text>
-            {/* <Image style={styles.image} src={props.sigImg.src} /> */}
             <Text style={styles.textForSignature}>
               ({props.formData.OwnerGender.toUpperCase()}.{props.formData.propertyOwnerName.toUpperCase()})
             </Text>
@@ -495,7 +473,6 @@ const PDFFile = (props) => {
         <View style={styles.imageContainer}>
           <div>
             <Text style={styles.textForSignature}>FIRST PARTY / LANDLORD</Text>
-            {/* <Image style={styles.image} src={props.sigImg.src} /> */}
             <Text style={styles.textForSignature}>
               ({props.formData.OwnerGender.toUpperCase()}.{props.formData.propertyOwnerName.toUpperCase()})
             </Text>
@@ -587,7 +564,6 @@ const PDFFile = (props) => {
         <View style={styles.imageContainer}>
           <div>
             <Text style={styles.textForSignature}>FIRST PARTY / LANDLORD</Text>
-            {/* <Image style={styles.image} src={props.sigImg.src} /> */}
             <Text style={styles.textForSignature}>
               ({props.formData.OwnerGender.toUpperCase()}.{props.formData.propertyOwnerName.toUpperCase()})
             </Text>
@@ -674,7 +650,6 @@ const PDFFile = (props) => {
         <View style={styles.imageContainer}>
           <div>
             <Text style={styles.textForSignature}>FIRST PARTY / LANDLORD</Text>
-            {/* <Image style={styles.image} src={props.sigImg.src} /> */}
             <Text style={styles.textForSignature}>
               ({props.formData.OwnerGender.toUpperCase()}.{props.formData.propertyOwnerName.toUpperCase()})
             </Text>
@@ -734,9 +709,9 @@ const PDFFile = (props) => {
           </Svg>
           <Text>&nbsp;</Text>
         </View>
-        {props.formData.thingsGiven.map((e) => {
+        {props.formData.thingsGiven.map((e,i) => {
           return (
-            <View style={styles.textForTable}>
+            <View key={i} style={styles.textForTable}>
               <div>
                 <Text style={styles.text}>{e.entity}</Text>
               </div>
@@ -750,7 +725,6 @@ const PDFFile = (props) => {
         <View style={styles.imageContainer}>
           <div>
             <Text style={styles.textForSignature}>FIRST PARTY / LANDLORD</Text>
-            {/* <Image style={styles.image} src={props.sigImg.src} /> */}
             <Text style={styles.textForSignature}>
               ({props.formData.OwnerGender.toUpperCase()}.{props.formData.propertyOwnerName.toUpperCase()})
             </Text>
@@ -777,15 +751,12 @@ const PDFFile = (props) => {
         </Text>
         <View style={styles.textWitness}>
           <Text style={styles.text}>WITNESSES:</Text>
-          {/* <Image style={styles.image} src={props.sigImg5.src} /> */}
           <Text style={styles.text}>1.({props.formData.witness1})</Text>
-          {/* <Image style={styles.image} src={props.sigImg6.src} /> */}
           <Text style={styles.text}>2.({props.formData.witness2})</Text>
         </View>
         <View style={styles.imageContainer}>
           <div>
             <Text style={styles.textForSignature}>FIRST PARTY / LANDLORD</Text>
-            {/* <Image style={styles.image} src={props.sigImg.src} /> */}
             <Text style={styles.textForSignature}>
               ({props.formData.OwnerGender.toUpperCase()}.{props.formData.propertyOwnerName.toUpperCase()})
             </Text>
