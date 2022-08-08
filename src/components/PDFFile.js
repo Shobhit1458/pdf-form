@@ -266,7 +266,7 @@ const PDFFile = (props) => {
         </Text>
         <Text style={styles.text}>
           <Text style={styles.bold}>{props.formData.OwnerGender.toUpperCase()}.{props.formData.propertyOwnerName.toUpperCase()}</Text>,
-          W/O <Text style={styles.bold}>{props.formData.byOwnerGender.toUpperCase()}.{" "}
+           {props.formData.byOwnerGender.toUpperCase()} {" "}<Text style={styles.bold}>
           {props.formData.propertyByOwner.toUpperCase()}</Text> R/O{" "}
           <Text style={styles.bold}>{props.formData.propertyAddress.toUpperCase()}</Text>
           (Hereinafter called the{" "}
@@ -313,7 +313,7 @@ const PDFFile = (props) => {
             <Text style={styles.textForSignature}>FIRST PARTY / LANDLORD</Text>
             {/* <Image style={styles.image} src={props.sigImg.src} /> */}
             <Text style={styles.textForSignature}>
-              ({props.formData.propertyOwnerName.toUpperCase()})
+              ({props.formData.OwnerGender.toUpperCase()}.{props.formData.propertyOwnerName.toUpperCase()})
             </Text>
           </div>
           <div>
@@ -416,7 +416,7 @@ const PDFFile = (props) => {
             <Text style={styles.textForSignature}>FIRST PARTY / LANDLORD</Text>
             {/* <Image style={styles.image} src={props.sigImg.src} /> */}
             <Text style={styles.textForSignature}>
-              ({props.formData.propertyOwnerName.toUpperCase()})
+              ({props.formData.OwnerGender.toUpperCase()}.{props.formData.propertyOwnerName.toUpperCase()})
             </Text>
           </div>
           <div>
@@ -497,7 +497,7 @@ const PDFFile = (props) => {
             <Text style={styles.textForSignature}>FIRST PARTY / LANDLORD</Text>
             {/* <Image style={styles.image} src={props.sigImg.src} /> */}
             <Text style={styles.textForSignature}>
-              ({props.formData.propertyOwnerName.toUpperCase()})
+              ({props.formData.OwnerGender.toUpperCase()}.{props.formData.propertyOwnerName.toUpperCase()})
             </Text>
           </div>
           <div>
@@ -589,7 +589,7 @@ const PDFFile = (props) => {
             <Text style={styles.textForSignature}>FIRST PARTY / LANDLORD</Text>
             {/* <Image style={styles.image} src={props.sigImg.src} /> */}
             <Text style={styles.textForSignature}>
-              ({props.formData.propertyOwnerName.toUpperCase()})
+              ({props.formData.OwnerGender.toUpperCase()}.{props.formData.propertyOwnerName.toUpperCase()})
             </Text>
           </div>
           <div>
@@ -676,7 +676,7 @@ const PDFFile = (props) => {
             <Text style={styles.textForSignature}>FIRST PARTY / LANDLORD</Text>
             {/* <Image style={styles.image} src={props.sigImg.src} /> */}
             <Text style={styles.textForSignature}>
-              ({props.formData.propertyOwnerName.toUpperCase()})
+              ({props.formData.OwnerGender.toUpperCase()}.{props.formData.propertyOwnerName.toUpperCase()})
             </Text>
           </div>
           <div>
@@ -735,7 +735,6 @@ const PDFFile = (props) => {
           <Text>&nbsp;</Text>
         </View>
         {props.formData.thingsGiven.map((e) => {
-          console.log(e);
           return (
             <View style={styles.textForTable}>
               <div>
@@ -753,7 +752,7 @@ const PDFFile = (props) => {
             <Text style={styles.textForSignature}>FIRST PARTY / LANDLORD</Text>
             {/* <Image style={styles.image} src={props.sigImg.src} /> */}
             <Text style={styles.textForSignature}>
-              ({props.formData.propertyOwnerName.toUpperCase()})
+              ({props.formData.OwnerGender.toUpperCase()}.{props.formData.propertyOwnerName.toUpperCase()})
             </Text>
           </div>
           <div>
@@ -788,7 +787,7 @@ const PDFFile = (props) => {
             <Text style={styles.textForSignature}>FIRST PARTY / LANDLORD</Text>
             {/* <Image style={styles.image} src={props.sigImg.src} /> */}
             <Text style={styles.textForSignature}>
-              ({props.formData.propertyOwnerName.toUpperCase()})
+              ({props.formData.OwnerGender.toUpperCase()}.{props.formData.propertyOwnerName.toUpperCase()})
             </Text>
           </div>
           <div>

@@ -632,7 +632,6 @@ const App = () => {
         fileName="FORM"
       >
         {({ blob, url, loading, error }) => {
-          console.log(blob);
           return (
             <button onClick={() => storeInCloud(blob)}>
               Save in Cloudinary
