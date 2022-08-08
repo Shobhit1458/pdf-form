@@ -143,7 +143,7 @@ const App = () => {
             onChange={(e) => {
               setformData({ ...formData, placeAddress: e.target.value });
             }}
-            value={formData.rentEnd}
+            value={formData.placeAddress}
             required
           />{" "}
           <br />
@@ -152,7 +152,7 @@ const App = () => {
             id="gender"
             value={formData.OwnerGender}
             onChange={(e) => {
-              setformData({ ...formData, placeAddress: e.target.value });
+              setformData({ ...formData, OwnerGender: e.target.value });
             }}
           >
             <option value="MR">MR</option>
